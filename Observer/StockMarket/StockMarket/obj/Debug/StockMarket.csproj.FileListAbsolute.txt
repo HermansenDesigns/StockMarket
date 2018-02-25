@@ -1,0 +1,7 @@
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\bin\Debug\StockMarket.exe.config
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\bin\Debug\StockMarket.exe
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\bin\Debug\StockMarket.pdb
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.csprojResolveAssemblyReference.cache
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.csproj.CoreCompileInputs.cache
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.exe
+D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.pdb
