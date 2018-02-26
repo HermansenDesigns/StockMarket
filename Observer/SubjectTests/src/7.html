@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Git\GitUni\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\Portfolio.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace StockMarket
+{
+    public class Portfolio : IObserver, IPortfolio
+    {
+        public string Name { get; set; }
+        public IPortfolioDisplay PortfolioDisplay { get; set; }
+        public Dictionary&lt;IStock, int&gt; Stocks { get; private set; }
+
+        public Portfolio(string name , IPortfolioDisplay portfolioDisplay)
+        {
+            Name = name;
+            Stocks = new Dictionary&lt;IStock, int&gt;();
+            PortfolioDisplay = portfolioDisplay ?? throw new ArgumentNullException(nameof(portfolioDisplay));
+        }
+
+        public void AddStock(IStock stock, int amount)
+        {
+            if (amount &lt;= 0)
+                throw new ArgumentException(&quot;amount has to be greater than 0&quot;);
+
+            if (!Stocks.ContainsKey(stock))
+            {
+                Stocks.Add(stock, amount);
+                ((Subject)stock).Register(this);
+                Console.WriteLine($&quot;{stock.Name} has added to the portfolio&quot;);
+            }
+            else
+            {
+                Stocks[stock] += amount;
+                Console.WriteLine($&quot;{amount} has been added to {stock.Name}&quot;);
+            }
+        }
+
+        public void RemoveStock(IStock stock, int amount)
+        {
+            if (amount &lt;= 0)
+                throw new ArgumentException(&quot;amount has to be greater than 0&quot;);
+
+            if (Stocks.ContainsKey(stock))
+            {
+                if (amount &gt;= Stocks[stock])
+                {
+                    Stocks.Remove(stock);
+                    ((Subject)stock).Unregister(this);
+                    Console.WriteLine($&quot;{stock.Name} has been removed from portfolio&quot;);
+                }
+                else
+                {
+                    Stocks[stock] -= amount;
+                    Console.WriteLine($&quot;{amount} has been removed from {stock.Name}&quot;);
+
+                }
+            }
+            else
+            {
+                Console.WriteLine($&quot;{stock.Name} is not a part of portfolio&quot;);
+            }
+        }
+
+        public decimal Total
+        {
+            get { return Stocks.Sum(o =&gt; o.Value * o.Key.Value); }
+        }
+
+        #region IObserver Members
+
+        public void ValueChanged(Subject value)
+        {
+
+            if (StockMarket.PortfolioNotifications)
+            {
+            PortfolioDisplay.PrintInformation(this);
+            }
+        }
+
+        #endregion
+
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,30,9,34,1],[9,35,9,39,1],[10,53,10,57,1],[10,58,10,62,1],[11,49,11,53,1],[11,54,11,66,1],[13,9,13,75,1],[14,9,14,10,1],[15,13,15,25,1],[16,13,16,52,1],[17,13,17,110,1],[18,9,18,10,1],[21,9,21,10,1],[22,13,22,29,1],[23,17,23,80,1],[25,13,25,44,1],[26,13,26,14,1],[27,17,27,43,1],[28,17,28,49,1],[29,17,29,79,1],[30,13,30,14,1],[32,13,32,14,1],[33,17,33,41,1],[34,17,34,79,1],[35,13,35,14,1],[36,9,36,10,1],[39,9,39,10,1],[40,13,40,29,1],[41,17,41,80,1],[43,13,43,43,1],[44,13,44,14,1],[45,17,45,45,1],[46,17,46,18,1],[47,21,47,42,1],[48,21,48,55,1],[49,21,49,88,1],[50,17,50,18,1],[52,17,52,18,1],[53,21,53,45,1],[54,21,54,87,1],[56,17,56,18,1],[57,13,57,14,1],[59,13,59,14,1],[60,17,60,79,1],[61,13,61,14,1],[62,9,62,10,1],[66,17,66,18,1],[66,19,66,42,1],[66,42,66,63,1],[66,63,66,65,1],[66,19,66,65,1],[66,66,66,67,1],[72,9,72,10,1],[74,13,74,52,1],[75,13,75,14,1],[76,13,76,53,1],[77,13,77,14,1],[78,9,78,10,1]]);
+    </script>
+  </body>
+</html>

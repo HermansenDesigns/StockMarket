@@ -2,6 +2,11 @@
 
 namespace StockMarket
 {
+    /// <summary>
+    /// IPortfolio interface
+    /// This interface contains the contract that makes
+    /// Portfolio derivatives able to handle IStock
+    /// </summary>
     public interface IPortfolio
     {
         string Name { get; set; }

@@ -37,7 +37,7 @@ namespace StockMarket.Unit.Test
         [Test]
         public void PortfolioDisplay_CanAccessPortfolio()
         {
-            
+
             _uut.PrintInformation(_portfolio);
             _portfolio.Received();
         }

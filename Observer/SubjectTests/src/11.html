@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Git\GitUni\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\StockMarket.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+
+namespace StockMarket
+{
+    public static class StockMarket
+    {
+        static StockMarket()
+        {
+            StockNotifications = false;
+            PortfolioNotifications = true;
+            Stocks = new HashSet&lt;IStock&gt;();
+        }
+
+        public static bool StockNotifications { get; set; }
+        public static bool PortfolioNotifications { get; set; }
+
+
+        public static HashSet&lt;IStock&gt; Stocks { get; private set; }
+        public static void ValueChanged(IStock stock)
+        {
+            if (StockNotifications)
+            {
+                Console.WriteLine(&quot;Value&quot;);
+                Console.WriteLine($&quot;- {stock.Name} changed to {stock.Value:0.##}\n&quot;);
+            }
+        }
+
+        public static void RefreshStocks()
+        {
+            foreach (var stock in Stocks)
+            {
+                stock.Instability();
+            }
+        }
+
+        public static void SellStock(IPortfolio portfolio)
+        {
+            if (Stocks == null)
+                return;
+
+            Console.WriteLine(&quot;-- StockMarket --&quot;);
+            Console.WriteLine(&quot;Sell your stock&quot;);
+            Console.WriteLine(&quot;Type the name of the stock to Select&quot;);
+
+            foreach (var stockItem in portfolio.Stocks)
+            {
+                Console.WriteLine($&quot;{stockItem.Key.Name} | {stockItem.Value}&quot;);
+            }
+
+            Console.WriteLine(&quot;--- &quot;);
+            Console.WriteLine();
+
+            string input = Console.ReadLine();
+            input = &quot;Google&quot;;
+
+            foreach (var stockItem in portfolio.Stocks.Keys)
+            {
+                if (input != stockItem.Name) continue;
+
+                Console.WriteLine(&quot;How many would you like to sell?&quot;);
+                var inputAmount = Console.ReadLine();
+
+                Int32.TryParse(inputAmount,out int result);
+                if (inputAmount != null) portfolio.RemoveStock(stockItem, result);
+                Console.WriteLine(&quot;Transaction was successful&quot;);
+                return;
+            }
+
+            Console.WriteLine(&quot;The typed stock name wasn&#39;t valid, try again&quot;);
+        }
+
+        public static void BuyStock(IPortfolio portfolio)
+        {
+            Console.WriteLine(&quot;-- StockMarket --&quot;);
+            Console.WriteLine(&quot;Buy stock&quot;);
+            Console.WriteLine(&quot;Type the name of the stock to Select&quot;);
+            foreach (var stockItem in Stocks)
+            {
+                Console.WriteLine($&quot;{stockItem.Name} | {stockItem.Value}&quot;);
+            }
+
+            Console.WriteLine();
+            var input = Console.ReadLine();
+            foreach (var stockItem in Stocks)
+            {
+                if (input == stockItem.Name)
+                {
+                    Console.WriteLine(&quot;How many would you like to buy?&quot;);
+                    var inputAmount = Console.ReadLine();
+
+                    Int32.TryParse(inputAmount, out int result);
+                    if (inputAmount != null) portfolio.AddStock((Stock)stockItem, result);
+                    Console.WriteLine(&quot;Transaction was successful&quot;);
+                    return;
+                }
+            }
+
+            Console.WriteLine(&quot;The typed stock name wasn&#39;t valid, try again&quot;);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,10,1],[13,13,13,40,1],[14,13,14,43,1],[15,13,15,44,1],[16,9,16,10,1],[18,49,18,53,1],[18,54,18,58,1],[19,53,19,57,1],[19,58,19,62,1],[22,48,22,52,1],[22,53,22,65,1],[24,9,24,10,1],[25,13,25,36,1],[26,13,26,14,1],[27,17,27,44,1],[28,17,28,86,1],[29,13,29,14,1],[30,9,30,10,1],[33,9,33,10,1],[34,13,34,20,1],[34,22,34,31,1],[34,32,34,34,1],[34,35,34,41,1],[35,13,35,14,1],[36,17,36,37,1],[37,13,37,14,1],[38,9,38,10,1]]);
+    </script>
+  </body>
+</html>

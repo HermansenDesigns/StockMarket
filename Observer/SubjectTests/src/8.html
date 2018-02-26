@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Git\GitUni\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\PortfolioDisplay.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace StockMarket
+{
+    public class PortfolioDisplay : IPortfolioDisplay
+    {
+        public void PrintInformation(IPortfolio portfolio)
+        {
+            Console.WriteLine($&quot;Displaying current portfolio: {portfolio.Name}...&quot;);
+            Console.WriteLine();
+
+            Console.WriteLine($&quot; | {portfolio.Name} has {portfolio.Total:0.##} in total stock value&quot;);
+            Console.WriteLine($&quot; | List of Stock&quot;);
+            Console.WriteLine(&quot; |----------------------------------------&quot;);
+            Console.WriteLine(&quot; |  Name  |   Value   | Amount |  Total  |&quot;);
+            Console.WriteLine(&quot; |----------------------------------------&quot;);
+            foreach (var stock in portfolio.Stocks)
+            {
+                Console.WriteLine($&quot; | {stock.Key.Name} |  {stock.Key.Value:0.##}   |   {stock.Value}   | {stock.Value * stock.Key.Value:0.##} |&quot;);
+                Console.WriteLine(&quot; |----------------------------------------&quot;);
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,10,1],[9,13,9,85,1],[10,13,10,33,1],[12,13,12,103,1],[13,13,13,52,1],[14,13,14,77,1],[15,13,15,77,1],[16,13,16,77,1],[17,13,17,20,1],[17,22,17,31,1],[17,32,17,34,1],[17,35,17,51,1],[18,13,18,14,1],[19,17,19,148,1],[20,17,20,81,1],[21,13,21,14,1],[23,13,23,33,1],[24,9,24,10,1]]);
+    </script>
+  </body>
+</html>

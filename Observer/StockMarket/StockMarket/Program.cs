@@ -7,15 +7,22 @@ using System.Threading.Tasks;
 
 namespace StockMarket
 {
-    class Program
+    public class Program
     {
+        /// <summary>
+        /// Update stock refreshes StockMarket and therefore Stock every second. Runs on a separate thread.
+        /// Adviced to turn of notifications while running.
+        /// </summary>
         private static void UpdateStock()
         {
             StockMarket.RefreshStocks();
             Thread.Sleep(1000);
         }
 
-        static void Main(string[] args)
+        /// <summary>
+        /// Dummy code to test application
+        /// </summary>
+        public static void Main()
         {
             var pd = new PortfolioDisplay();
             var portfolios = new List<IPortfolio>();
@@ -33,8 +40,6 @@ namespace StockMarket
             myPortfolio.AddStock(googleStock, 51);
             myPortfolio.AddStock(vestasStock, 95);
             hisPortfolio.AddStock(googleStock, 22);
-
-            
 
             while (true)
             {
@@ -81,7 +86,6 @@ namespace StockMarket
                             break;
                     }
                 }
-
             }
         }
     }
