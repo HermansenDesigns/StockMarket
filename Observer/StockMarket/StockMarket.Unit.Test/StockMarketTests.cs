@@ -34,7 +34,7 @@ namespace StockMarket.Unit.Test
         {
 
             Assert.IsTrue(StockMarket.PortfolioNotifications);
-            Assert.IsFalse(StockMarket.StockNotifications);
+            Assert.IsTrue(StockMarket.StockNotifications);
         }
 
         [Test]
