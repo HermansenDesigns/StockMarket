@@ -61,10 +61,7 @@ namespace StockMarket
         /// </summary>
         public static void RefreshStocks()
         {
-            foreach (var stock in Stocks)
-            {
-                stock.Instability();
-            }
+            Stocks.ToList().ForEach(s => s.Instability());
         }
 
         /// <summary>
@@ -74,6 +71,7 @@ namespace StockMarket
         /// <param name="portfolio">Chosen portfolio to sell stock from</param>
         public static void SellStock(IPortfolio portfolio)
         {
+            // If stock is not initialized return. could be implemented with an exception
             if (Stocks == null)
                 return;
 
@@ -89,6 +87,7 @@ namespace StockMarket
             Console.WriteLine("--- ");
             Console.WriteLine();
 
+            // Takes input from user.
             string input = Console.ReadLine();
             input = "Google";
 
@@ -100,6 +99,8 @@ namespace StockMarket
                 var inputAmount = Console.ReadLine();
 
                 Int32.TryParse(inputAmount,out int result);
+
+                // Removes the specific amount of Stock
                 if (inputAmount != null) portfolio.RemoveStock(stockItem, result);
                 Console.WriteLine("Transaction was successful");
                 return;
@@ -135,6 +136,8 @@ namespace StockMarket
                     var inputAmount = Console.ReadLine();
 
                     Int32.TryParse(inputAmount, out int result);
+
+                    // Adds the specific amount of Stock
                     if (inputAmount != null) portfolio.AddStock((Stock)stockItem, result);
                     Console.WriteLine("Transaction was successful");
                     return;

@@ -57,11 +57,13 @@ namespace StockMarket
             if (!Stocks.ContainsKey(stock))
             {
                 Stocks.Add(stock, amount);
+                // Allows the observer to subscribe to subject if new.
                 ((Subject)stock).Register(this);
                 Console.WriteLine($"{stock.Name} has added to the portfolio");
             }
             else
             {
+                // Adds Amount
                 Stocks[stock] += amount;
                 Console.WriteLine($"{amount} has been added to {stock.Name}");
             }
@@ -86,11 +88,13 @@ namespace StockMarket
                 if (amount >= Stocks[stock])
                 {
                     Stocks.Remove(stock);
+                    // Allows observer to unsubscribe
                     ((Subject)stock).Unregister(this);
                     Console.WriteLine($"{stock.Name} has been removed from portfolio");
                 }
                 else
                 {
+                    // Removes an amount of Stock
                     Stocks[stock] -= amount;
                     Console.WriteLine($"{amount} has been removed from {stock.Name}");
 
@@ -107,6 +111,7 @@ namespace StockMarket
         /// </summary>
         public decimal Total
         {
+            // Returns the Total sum of Value * Amount for every Stock
             get { return Stocks.Sum(o => o.Value * o.Key.Value); }
         }
 
@@ -115,9 +120,14 @@ namespace StockMarket
         /// The value changed, and the method implemented from interface, this takes a <see cref="Subject"/> Abstraction
         /// and prints the changed value. This method is crucial for the Observer pattern.
         /// </summary>
+        /// <para>
+        /// Implemented as using push methodology, but doesn't directly use the internal state and only using it retrieve a
+        /// notification for a new update and passing itself to the output, therefore using the pull methodology instead.
+        /// </para>
         /// <param name="value">This parameter is the internal state of the Subject received. This ensures that the Observer knows the state</param>
         public void ValueChanged(Subject value)
         {
+            // Checks global variable if notifications are allowed.
             if (StockMarket.PortfolioNotifications)
             {
                 PortfolioDisplay.PrintInformation(this);

@@ -29,8 +29,8 @@ namespace StockMarket
             set
             {
                 _value = value;
-                Notify();
-                StockMarket.ValueChanged(this);
+                Notify(); // Self referring call that notifies all observers
+                StockMarket.ValueChanged(this); // Update the StockMarket
             }
         }
 
@@ -44,7 +44,7 @@ namespace StockMarket
         {
             Name = name;
             Value = value;
-            StockMarket.Stocks.Add(this);
+            StockMarket.Stocks.Add(this); // Adds to the global list of Stock
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace StockMarket
         public void Instability()
         {
             Random rnd = new Random();
-            Value = Value + Value * rnd.Next(-5, 5) / 100;
+            Value = Value + Value * rnd.Next(-5, 5) / 100; // Changes the interval value by a max of 10%
         }
     }
 }

@@ -14,6 +14,10 @@ namespace StockMarket
         /// <summary>
         /// The variable that holds the collection of Observers registered
         /// </summary>
+        /// <para>
+        /// The HashSet holds unique values and is perfect to disallow the option of
+        /// having multiple of the same <see cref="IObserver"/> objects.
+        /// </para>
         private HashSet<IObserver> _observers = new HashSet<IObserver>();
 
         /// <summary>
@@ -40,6 +44,7 @@ namespace StockMarket
         /// </summary>
         public void Notify()
         {
+            // Linq foreach loop to notify that the state of object has changed
             _observers.ToList().ForEach(o => o.ValueChanged(this));
         }
 

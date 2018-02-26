@@ -9,12 +9,19 @@ namespace StockMarket
 {
     public class Program
     {
+        /// <summary>
+        /// Update stock refreshes StockMarket and therefore Stock every second. Runs on a separate thread.
+        /// Adviced to turn of notifications while running.
+        /// </summary>
         private static void UpdateStock()
         {
             StockMarket.RefreshStocks();
             Thread.Sleep(1000);
         }
 
+        /// <summary>
+        /// Dummy code to test application
+        /// </summary>
         public static void Main()
         {
             var pd = new PortfolioDisplay();
