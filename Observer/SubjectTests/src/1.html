@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\Git\GitUni\SWDGrp\StockMarket\Observer\StockMarket\StockMarket.Unit.Test\PortfolioDisplayTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NSubstitute;
+using NUnit.Framework;
+
+namespace StockMarket.Unit.Test
+{
+    [TestFixture]
+    public class PortfolioDisplayTests
+    {
+        private IPortfolio _portfolio;
+        private IStock _stock;
+        private PortfolioDisplay _uut;
+
+        [SetUp]
+        public void Init()
+        {
+            _portfolio = Substitute.For&lt;IPortfolio&gt;();
+            _stock = Substitute.For&lt;IStock&gt;();
+
+            _uut = new PortfolioDisplay();
+
+            _portfolio.Name.Returns(&quot;Folder1&quot;);
+            _portfolio.Total.Returns(1);
+
+            var tempDic = new Dictionary&lt;IStock, int&gt;();
+            tempDic.Add(_stock, 40);
+
+            _portfolio.Stocks.Returns(tempDic);
+
+        }
+
+
+        [Test]
+        public void PortfolioDisplay_CanAccessPortfolio()
+        {
+
+            _uut.PrintInformation(_portfolio);
+            _portfolio.Received();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,55,1],[22,13,22,47,1],[24,13,24,43,1],[26,13,26,48,1],[27,13,27,41,1],[29,13,29,57,1],[30,13,30,37,1],[32,13,32,48,1],[34,9,34,10,1],[39,9,39,10,1],[41,13,41,47,1],[42,13,42,35,1],[43,9,43,10,1]]);
+    </script>
+  </body>
+</html>

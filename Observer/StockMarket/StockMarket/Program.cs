@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket
 {
-    class Program
+    public class Program
     {
         private static void UpdateStock()
         {
@@ -15,7 +15,7 @@ namespace StockMarket
             Thread.Sleep(1000);
         }
 
-        static void Main(string[] args)
+        public static void Main()
         {
             var pd = new PortfolioDisplay();
             var portfolios = new List<IPortfolio>();
@@ -33,8 +33,6 @@ namespace StockMarket
             myPortfolio.AddStock(googleStock, 51);
             myPortfolio.AddStock(vestasStock, 95);
             hisPortfolio.AddStock(googleStock, 22);
-
-            
 
             while (true)
             {
@@ -81,7 +79,6 @@ namespace StockMarket
                             break;
                     }
                 }
-
             }
         }
     }
