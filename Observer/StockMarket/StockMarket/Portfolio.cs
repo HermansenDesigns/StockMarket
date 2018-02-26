@@ -6,13 +6,15 @@ namespace StockMarket
 {
     public class Portfolio : IObserver
     {
-        public Portfolio(PortfolioDisplay portfolioDisplay)
-        {
-            PortfolioDisplay = portfolioDisplay ?? throw new ArgumentNullException(nameof(portfolioDisplay));
-        }
-
+        public string Name { get; set; }
         public PortfolioDisplay PortfolioDisplay { get; set; }
         public Dictionary<Stock, int> Stocks { get; private set; } = new Dictionary<Stock, int>();
+
+        public Portfolio(string name ,PortfolioDisplay portfolioDisplay)
+        {
+            Name = name;
+            PortfolioDisplay = portfolioDisplay ?? throw new ArgumentNullException(nameof(portfolioDisplay));
+        }
 
         public void AddStock(Stock stock, int amount)
         {
@@ -29,7 +31,6 @@ namespace StockMarket
             {
                 Stocks[stock] += amount;
                 Console.WriteLine($"{amount} has been added to {stock.Name}");
-
             }
         }
 

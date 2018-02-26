@@ -5,3 +5,10 @@ D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.cspr
 D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.csproj.CoreCompileInputs.cache
 D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.exe
 D:\Git\GitUni\SWDGrp\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.pdb
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\bin\Debug\StockMarket.exe.config
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\bin\Debug\StockMarket.exe
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\bin\Debug\StockMarket.pdb
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.csprojResolveAssemblyReference.cache
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.csproj.CoreCompileInputs.cache
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.exe
+C:\Users\KaspersLaptop\Documents\GitHub\4thSemester\SWDGrp\StockMarket\Observer\StockMarket\StockMarket\obj\Debug\StockMarket.pdb
