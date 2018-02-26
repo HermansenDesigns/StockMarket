@@ -1,10 +1,26 @@
 ﻿namespace StockMarket
 {
-    public interface ISubject
+    public class Subject
     {
-        void Register(IObserver observer);
-        void Unregister(IObserver observer);
+        #region ISubject Members
 
-        void Notify();
+        private HashSet<IObserver> _observers = new HashSet<IObserver>();
+
+        public void Register(IObserver observer)
+        {
+            _observers.Add(observer);
+        }
+
+        public void Unregister(IObserver observer)
+        {
+            _observers.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            _observers.ToList().ForEach(o => o.ValueChanged(this));
+        }
+
+        #endregion
     }
 }

@@ -20,7 +20,7 @@ namespace StockMarket
 
 
         public static HashSet<Stock> Stocks { get; set; }
-        public static void ValueChanged(ISubject stock)
+        public static void ValueChanged(Subject stock)
         {
             if (StockNotifications)
             {
