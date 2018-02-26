@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StockMarket
+namespace StockMarket.Interfaces
 {
     /// <summary>
     /// IPortfolio interface

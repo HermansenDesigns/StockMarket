@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using StockMarket.Interfaces;
 
 namespace StockMarket
 {
@@ -19,7 +20,7 @@ namespace StockMarket
         /// </summary>
         static StockMarket()
         {
-            StockNotifications = false;
+            StockNotifications = true;
             PortfolioNotifications = true;
             Stocks = new HashSet<IStock>();
         }

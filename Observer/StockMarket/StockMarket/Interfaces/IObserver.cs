@@ -1,4 +1,4 @@
-﻿namespace StockMarket
+﻿namespace StockMarket.Interfaces
 {
     /// <summary>
     /// IObserver interface

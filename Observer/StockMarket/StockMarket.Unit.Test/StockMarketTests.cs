@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+using StockMarket.Interfaces;
 
 namespace StockMarket.Unit.Test
 {

@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IObserver.cs" />
-    <Compile Include="IPortfolio.cs" />
-    <Compile Include="IPortfolioDisplay.cs" />
-    <Compile Include="IStock.cs" />
+    <Compile Include="Interfaces\IObserver.cs" />
+    <Compile Include="Interfaces\IPortfolio.cs" />
+    <Compile Include="Interfaces\IPortfolioDisplay.cs" />
+    <Compile Include="Interfaces\IStock.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Portfolio.cs" />
     <Compile Include="PortfolioDisplay.cs" />
