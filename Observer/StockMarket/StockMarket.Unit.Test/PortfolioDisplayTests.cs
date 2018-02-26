@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
+using StockMarket.Interfaces;
 
 namespace StockMarket.Unit.Test
 {
