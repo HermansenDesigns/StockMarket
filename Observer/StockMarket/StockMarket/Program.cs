@@ -12,13 +12,14 @@ namespace StockMarket
         private static void UpdateStock()
         {
             StockMarket.RefreshStocks();
+            Thread.Sleep(1000);
         }
 
         static void Main(string[] args)
         {
             var pd = new PortfolioDisplay();
             var portfolios = new List<Portfolio>();
-            var myPortfolio = new Portfolio("MyPortfolio",pd);
+            var myPortfolio = new Portfolio("MyPortfolio", pd);
             var hisPortfolio = new Portfolio("HisPortfolio", pd);
             portfolios.Add(myPortfolio);
             portfolios.Add(hisPortfolio);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StockMarket
@@ -23,6 +24,12 @@ namespace StockMarket
             Name = name;
             Value = value;
             StockMarket.Stocks.Add(this);
+        }
+
+        public void Instability()
+        {
+            Random rnd = new Random();
+            Value = Value + Value * rnd.Next(-5, 5) / 100;
         }
 
         #region ISubject Members

@@ -8,11 +8,12 @@ namespace StockMarket
     {
         public string Name { get; set; }
         public PortfolioDisplay PortfolioDisplay { get; set; }
-        public Dictionary<Stock, int> Stocks { get; private set; } = new Dictionary<Stock, int>();
+        public Dictionary<Stock, int> Stocks { get; private set; }
 
         public Portfolio(string name ,PortfolioDisplay portfolioDisplay)
         {
             Name = name;
+            Stocks = new Dictionary<Stock, int>();
             PortfolioDisplay = portfolioDisplay ?? throw new ArgumentNullException(nameof(portfolioDisplay));
         }
 
@@ -69,7 +70,11 @@ namespace StockMarket
 
         public void ValueChanged(ISubject value)
         {
+
+            if (StockMarket.PortfolioNotifications)
+            {
             PortfolioDisplay.PrintInformation(this);
+            }
         }
 
         #endregion
