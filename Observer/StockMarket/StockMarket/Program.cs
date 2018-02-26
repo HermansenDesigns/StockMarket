@@ -9,6 +9,11 @@ namespace StockMarket
 {
     class Program
     {
+        private static void UpdateStock()
+        {
+            StockMarket.RefreshStocks();
+        }
+
         static void Main(string[] args)
         {
             var pd = new PortfolioDisplay();
@@ -22,9 +27,13 @@ namespace StockMarket
             var googleStock = new Stock("Google" , 200.25M);
             var vestasStock = new Stock("Vestas", 150.75M);
 
+            new Thread(UpdateStock);
+
             myPortfolio.AddStock(googleStock, 51);
             myPortfolio.AddStock(vestasStock, 95);
             hisPortfolio.AddStock(googleStock, 22);
+
+            
 
             while (true)
             {
