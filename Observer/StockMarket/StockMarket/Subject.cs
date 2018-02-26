@@ -1,4 +1,7 @@
-﻿namespace StockMarket
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace StockMarket
 {
     public class Subject
     {

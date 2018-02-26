@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        void ValueChanged(ISubject stock);
+        void ValueChanged(Subject stock);
     }
 }

@@ -4,20 +4,20 @@ using System.Linq;
 
 namespace StockMarket
 {
-    public class Portfolio : IObserver
+    public class Portfolio : IObserver, IPortfolio
     {
         public string Name { get; set; }
-        public PortfolioDisplay PortfolioDisplay { get; set; }
-        public Dictionary<Stock, int> Stocks { get; private set; }
+        public IPortfolioDisplay PortfolioDisplay { get; set; }
+        public Dictionary<IStock, int> Stocks { get; private set; }
 
         public Portfolio(string name ,PortfolioDisplay portfolioDisplay)
         {
             Name = name;
-            Stocks = new Dictionary<Stock, int>();
+            Stocks = new Dictionary<IStock, int>();
             PortfolioDisplay = portfolioDisplay ?? throw new ArgumentNullException(nameof(portfolioDisplay));
         }
 
-        public void AddStock(Stock stock, int amount)
+        public void AddStock(IStock stock, int amount)
         {
             if (amount <= 0)
                 throw new ArgumentException("amount has to be greater than 0");
@@ -25,7 +25,7 @@ namespace StockMarket
             if (!Stocks.ContainsKey(stock))
             {
                 Stocks.Add(stock, amount);
-                stock.Register(this);
+                ((Subject)stock).Register(this);
                 Console.WriteLine($"{stock.Name} has added to the portfolio");
             }
             else
@@ -35,7 +35,7 @@ namespace StockMarket
             }
         }
 
-        public void RemoveStock(Stock stock, int amount)
+        public void RemoveStock(IStock stock, int amount)
         {
             if (amount <= 0)
                 throw new ArgumentException("amount has to be greater than 0");
@@ -45,7 +45,7 @@ namespace StockMarket
                 if (amount >= Stocks[stock])
                 {
                     Stocks.Remove(stock);
-                    stock.Unregister(this);
+                    ((Subject)stock).Unregister(this);
                     Console.WriteLine($"{stock.Name} has been removed from portfolio");
                 }
                 else
@@ -68,7 +68,7 @@ namespace StockMarket
 
         #region IObserver Members
 
-        public void ValueChanged(ISubject value)
+        public void ValueChanged(Subject value)
         {
 
             if (StockMarket.PortfolioNotifications)

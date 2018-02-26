@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace StockMarket
 {
-    public class Stock : Subject
+    public class Stock : Subject, IStock
     {
         public string Name { get; private set; }
         private decimal _value;
@@ -31,7 +31,5 @@ namespace StockMarket
             Random rnd = new Random();
             Value = Value + Value * rnd.Next(-5, 5) / 100;
         }
-
-
     }
 }

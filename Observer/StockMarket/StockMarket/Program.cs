@@ -18,7 +18,7 @@ namespace StockMarket
         static void Main(string[] args)
         {
             var pd = new PortfolioDisplay();
-            var portfolios = new List<Portfolio>();
+            var portfolios = new List<IPortfolio>();
             var myPortfolio = new Portfolio("MyPortfolio", pd);
             var hisPortfolio = new Portfolio("HisPortfolio", pd);
             portfolios.Add(myPortfolio);

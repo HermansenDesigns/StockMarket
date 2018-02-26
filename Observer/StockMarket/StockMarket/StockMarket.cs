@@ -12,20 +12,20 @@ namespace StockMarket
         {
             StockNotifications = false;
             PortfolioNotifications = true;
-            Stocks = new HashSet<Stock>();
+            Stocks = new HashSet<IStock>();
         }
 
         public static bool StockNotifications { get; set; }
         public static bool PortfolioNotifications { get; set; }
 
 
-        public static HashSet<Stock> Stocks { get; set; }
-        public static void ValueChanged(Subject stock)
+        public static HashSet<IStock> Stocks { get; private set; }
+        public static void ValueChanged(IStock stock)
         {
             if (StockNotifications)
             {
                 Console.WriteLine("Value");
-                Console.WriteLine($"- {((Stock)stock).Name} changed to {((Stock)stock).Value:0.##}\n");
+                Console.WriteLine($"- {stock.Name} changed to {stock.Value:0.##}\n");
             }
         }
 
@@ -37,8 +37,11 @@ namespace StockMarket
             }
         }
 
-        public static void SellStock(Portfolio portfolio)
+        public static void SellStock(IPortfolio portfolio)
         {
+            if (Stocks == null)
+                return;
+
             Console.WriteLine("-- StockMarket --");
             Console.WriteLine("Sell your stock");
             Console.WriteLine("Type the name of the stock to Select");
@@ -70,7 +73,7 @@ namespace StockMarket
             Console.WriteLine("The typed stock name wasn't valid, try again");
         }
 
-        public static void BuyStock(Portfolio portfolio)
+        public static void BuyStock(IPortfolio portfolio)
         {
             Console.WriteLine("-- StockMarket --");
             Console.WriteLine("Buy stock");
@@ -90,7 +93,7 @@ namespace StockMarket
                     var inputAmount = Console.ReadLine();
 
                     Int32.TryParse(inputAmount, out int result);
-                    if (inputAmount != null) portfolio.AddStock(stockItem, result);
+                    if (inputAmount != null) portfolio.AddStock((Stock)stockItem, result);
                     Console.WriteLine("Transaction was successful");
                     return;
                 }

@@ -2,9 +2,9 @@
 
 namespace StockMarket
 {
-    public class PortfolioDisplay
+    public class PortfolioDisplay : IPortfolioDisplay
     {
-        public void PrintInformation(Portfolio portfolio)
+        public void PrintInformation(IPortfolio portfolio)
         {
             Console.WriteLine($"Displaying current portfolio: {portfolio.Name}...");
             Console.WriteLine();
