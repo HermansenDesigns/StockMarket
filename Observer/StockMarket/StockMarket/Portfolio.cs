@@ -10,7 +10,7 @@ namespace StockMarket
         public IPortfolioDisplay PortfolioDisplay { get; set; }
         public Dictionary<IStock, int> Stocks { get; private set; }
 
-        public Portfolio(string name ,PortfolioDisplay portfolioDisplay)
+        public Portfolio(string name , IPortfolioDisplay portfolioDisplay)
         {
             Name = name;
             Stocks = new Dictionary<IStock, int>();

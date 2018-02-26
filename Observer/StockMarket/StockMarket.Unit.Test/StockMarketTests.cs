@@ -34,7 +34,6 @@ namespace StockMarket.Unit.Test
 
             Assert.IsTrue(StockMarket.PortfolioNotifications);
             Assert.IsFalse(StockMarket.StockNotifications);
-            Assert.IsEmpty(StockMarket.Stocks);
         }
 
         [Test]

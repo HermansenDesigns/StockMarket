@@ -54,8 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PortfolioDisplayTests.cs" />
+    <Compile Include="PortfolioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockMarketTests.cs" />
+    <Compile Include="StockTests.cs" />
+    <Compile Include="SubjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StockMarket\StockMarket.csproj">
